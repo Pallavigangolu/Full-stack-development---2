@@ -1,0 +1,36 @@
+const express = require('express'); 
+const app = express();
+app.get('/', (req, res) => 
+{
+res.send('<br>'+ ' Welcome To the Home Page');
+});
+// Route with Parameters 
+app.get('/user/:id',(req,res)=>
+{ 
+   const userId=req.params.id;
+   res.send(`User ID Revieved: ${userId}`);
+});
+// Route with multiple route Parameters 
+app.get('/product/:id/:name',(req,res)=>
+{
+  const {id,name}=req.params;
+  res.send(`Product ID: ${id}, Product Name: ${name}`);
+});
+// Route With query parameters 
+app.get('/search',(req,res)=>
+{
+   const keyword=req.query.keyword; 
+   const limit=req.query.limit;
+   res.send(`Searching for: ${keyword}, Limit: ${limit}`);
+});
+// Route Showing URL Building 
+app.get('/url-info',(req,res)=>
+{
+   const fullUrl=req.protocol+'://'+req.get('host')+req.originalUrl; 
+    res.send(`Full URL: ${fullUrl}`);
+});
+app.listen(3000,()=>{
+console.log('Server is running on port 3000');
+});
+ 
+
