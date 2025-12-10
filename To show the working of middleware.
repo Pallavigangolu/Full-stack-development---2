@@ -1,0 +1,24 @@
+const express = require('express'); 
+const app = express();
+// Middleware function 
+function loggerMiddleware(req, res, next) 
+{
+  if (10 < 20) 
+ {
+     console.log(`| ${req.method} ${req.url}`);
+     next();
+  }
+}
+app.use(loggerMiddleware);
+// Route: Home 
+app.get('/', (req, res) => {
+  res.send('Hello From Hello Route');
+});
+// Route: About 
+app.get('/about', (req, res) => {
+   res.send('Hello From About Route ');
+});
+// Start the server 
+app.listen(1891, () => {
+console.log('Server is running on port 1891');
+});
