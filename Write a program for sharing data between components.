@@ -1,0 +1,13 @@
+import React, { createContext, useContext } from "react"; 
+const UserContext = createContext(); 
+function Child() { 
+  const user = useContext(UserContext);   return <h2>Hello, {user}!</h2>; 
+} 
+function Parent() { 
+  return ( 
+    <UserContext.Provider value="M.Jagadeswari-23A91A6138"> 
+      <Child /> 
+    </UserContext.Provider> 
+  ); 
+} 
+export default Parent; 
